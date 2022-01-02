@@ -1,0 +1,17 @@
+{% extends 'main_base.html' %}
+
+{% block content %}
+<h1>{% block title %} Add Car {% endblock %}</h1>
+
+<form method="post">
+	<div class="form-group">
+		<label for="model">Model</label>
+		<input type="text" name="model"
+			   placeholder="Model title" class="form-control"
+			   value="{{ request.form['model'] }}"></input>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
+{% endblock %}

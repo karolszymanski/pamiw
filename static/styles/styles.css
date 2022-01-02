@@ -1,0 +1,36 @@
+h1 {
+    color: #212529;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.c-img-3 {
+    margin: 0 0.3em;
+    font-size: 3em;
+}
+
+a.nav-link {
+   color: #f8f9fa!important;
+}
+
+input, textarea {
+    border: none!important;
+    border-bottom: 1px solid #212529!important;
+}
+
+select {
+    border: none;
+    padding-right: 0.2em;
+    width: 100%;
+    border-bottom: 1px solid #212529;
+    border-radius: 1em 0;
+    margin: 0.5em;
+}
+
+input:hover, textarea:hover, select:hover {
+    cursor: pointer;
+}
+
+.w-45 {
+    width: 45%;
+}

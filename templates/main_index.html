@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../static/styles/styles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+	<title>Pack&Go</title>
+</head>
+<body>
+	{% extends 'main_base.html' %}
+
+	{% block content %}
+		{% for package in packages %}
+		<div class="d-flex justify-content-between">
+			<div class="d-flex justify-content-between">
+				<i class="bi bi-box c-img-3"></i>
+				<div>
+					<h4>{{ package['title'] }}</h4>
+					<p>{{ package['package_id'] }}</p>
+				</div>
+			</div>
+			<div class="my-auto">
+				<a href="{{ url_for('package.edit', id=package['id']) }}">
+					<button type="button" class="btn btn-warning">Edit</button>
+				</a>
+				<a href="{{ url_for('package.details', id=package['id']) }}">
+					<button type="button" class="btn btn-warning">Details</button>
+				</a>
+			</div>
+		</div>
+		<hr>
+		{% endfor %}
+	{% endblock %}
+</body>
+</html>

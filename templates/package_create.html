@@ -1,0 +1,45 @@
+{% extends 'main_base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Package {% endblock %}</h1>
+
+<form method="post">
+	<div class="form-group">
+		<label for="title">Title</label>
+		<input type="text" name="title"
+			   placeholder="Package title" class="form-control"
+			   value="{{ request.form['title'] }}"></input>
+	</div>
+
+	<div class="form-group">
+		<label for="details">Content</label>
+		<textarea name="details" placeholder="Package details"
+				  class="form-control">{{ request.form['content'] }}</textarea>
+	</div>
+
+	<div class="d-flex justify-content-between">
+		<div class="w-45">
+			<p for="courier">Courier</p>
+			<select class="form-select" name="courier" aria-label="Select Courier">
+				{% for courier in couriers %}
+				<option value="{{ courier['courier_id'] }}">{{ courier['name'] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="w-45">
+			<p for="package_locker">Package locker</p>
+			<select class="selectpicker" name="package_locker" aria-label="Select Package Locker">
+				{% for package_locker in package_lockers %}
+				<option value="{{ package_locker['package_locker_id'] }}">{{ package_locker['name'] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+	</div>
+</form>
+
+{% endblock %}

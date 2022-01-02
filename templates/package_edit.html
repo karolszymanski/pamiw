@@ -1,0 +1,32 @@
+{% extends 'main_base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ package['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+	<div class="form-group">
+		<label for="title">Title</label>
+		<input type="text" name="title" placeholder="Package title"
+			   class="form-control"
+			   value="{{ request.form['title'] or package['title'] }}">
+		</input>
+	</div>
+
+	<div class="form-group">
+		<label for="details">Details</label>
+		<textarea name="details" placeholder="Package details"
+				  class="form-control">{{ request.form['content'] or package['content'] }}</textarea>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
+<hr>
+
+<form action="{{ url_for('package.delete', id=package['id']) }}" method="POST">
+	<input type="submit" value="Delete Package"
+		   class="btn btn-danger btn-sm"
+		   onclick="return confirm('Are you sure you want to delete this package?')">
+</form>
+
+{% endblock %}
