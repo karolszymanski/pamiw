@@ -12,24 +12,26 @@
 
 	{% block content %}
 		{% for package in packages %}
-		<div class="d-flex justify-content-between">
+		<div id="package-{{package['package_id']}}">
 			<div class="d-flex justify-content-between">
-				<i class="bi bi-box c-img-3"></i>
-				<div>
-					<h4>{{ package['title'] }}</h4>
-					<p>{{ package['package_id'] }}</p>
+				<div class="d-flex justify-content-between">
+					<i class="bi bi-box c-img-3"></i>
+					<div class="package-info-container">
+						<h4 id="package-title">{{ package['title'] }}</h4>
+						<p id="package-id">{{ package['package_id'] }}</p>
+					</div>
+				</div>
+				<div class="my-auto">
+					<a href="{{ url_for('package.edit', id=package['id']) }}">
+						<button type="button" class="btn btn-warning">Edit</button>
+					</a>
+					<a href="{{ url_for('package.details', id=package['id']) }}">
+						<button type="button" class="btn btn-warning">Details</button>
+					</a>
 				</div>
 			</div>
-			<div class="my-auto">
-				<a href="{{ url_for('package.edit', id=package['id']) }}">
-					<button type="button" class="btn btn-warning">Edit</button>
-				</a>
-				<a href="{{ url_for('package.details', id=package['id']) }}">
-					<button type="button" class="btn btn-warning">Details</button>
-				</a>
-			</div>
+			<hr>
 		</div>
-		<hr>
 		{% endfor %}
 	{% endblock %}
 </body>

@@ -11,8 +11,9 @@ def gen_package_id():
 	return secrets.token_hex(15)
 
 @main.route('/')
-@login_required
 def index():
-	packages = Package.query.all()
-
-	return render_template('main_index.html', packages=packages)
+	if current_user.is_authenticated:
+		packages = Package.query.all()
+		return render_template("main_index.html", packages=packages)
+	else:
+		return redirect(url_for("auth.login"))

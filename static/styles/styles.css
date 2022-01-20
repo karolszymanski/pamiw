@@ -9,6 +9,10 @@ h1 {
     font-size: 3em;
 }
 
+.text-indent-1 {
+    text-indent: 0.5rem;
+}
+
 a.nav-link {
    color: #f8f9fa!important;
 }

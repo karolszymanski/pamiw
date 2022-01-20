@@ -3,6 +3,13 @@
 {% block content %}
 <div class="bg-white p-3">
 	<h1>Login</h1>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<div class="alert alert-danger" role="alert">
+		{{ messages[0] }}
+	</div>
+	{% endif %}
+	{% endwith %}
 	<form method="POST" action="/login">
 		<div class="form-group">
 			<label>Your email address:</label>
@@ -13,12 +20,7 @@
 			<label>Your password:</label>
 			<input class="form-control" type="password" name="password" placeholder="Your Password">
 		</div>
-<!--			<div class="field">-->
-<!--				<label class="checkbox">-->
-<!--					<input type="checkbox" name="remember">-->
-<!--					Remember me-->
-<!--				</label>-->
-<!--			</div>-->
+
 		<button class="btn btn-primary w-100 mt-3">Login</button>
 	</form>
 </div>

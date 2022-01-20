@@ -4,7 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="../static/styles/styles.css">
+
+	<script src="../static/features/features.js"></script>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -14,6 +16,9 @@
 		<div class="d-flex justify-content-between w-100">
 			<ul class="navbar-nav">
 				{% if current_user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('main.index')}}">HOME</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{url_for('package.create')}}">New Package</a>
 				</li>
@@ -38,6 +43,9 @@
 				</li>
 				{% endif %}
 				{% if current_user.is_authenticated %}
+				<li class="my-auto">
+					<input id="filter-packages-input" class="text-indent-1" placeholder="Search..." onkeyup="filterPackages(value)">
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{url_for('auth.logout')}}">Logout</a>
 				</li>
