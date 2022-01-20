@@ -36,8 +36,35 @@ def create_post():
 @package.route('/package/edit/<int:id>')
 @login_required
 def edit(id):
+	couriers = Courier.query.all()
 	package = Package.query.filter_by(id=id).first()
-	return render_template('package_edit.html', package=package)
+	return render_template('package_edit.html', package=package, couriers=couriers)
+
+@package.route('/package/edit/<int:id>', methods=['POST'])
+@login_required
+def edit_post(id):
+	package = Package.query.filter_by(id=id).first()
+
+	title = request.form['title']
+	details = request.form['details']
+	courier = request.form['courier']
+	status = request.form['status']
+
+	if title:
+		package.title = title
+
+	if details:
+		package.details = details
+
+	if courier:
+		package.courier = courier
+
+	if status:
+		package.status = status
+
+	db.session.commit()
+
+	return redirect(url_for('main.index'))
 
 @package.route('/package/delete/<int:id>', methods=['GET', 'POST'])
 @login_required

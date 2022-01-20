@@ -9,14 +9,32 @@
 		<input type="text" name="title" placeholder="Package title"
 			   class="form-control"
 			   value="{{ request.form['title'] or package['title'] }}">
-		</input>
 	</div>
 
 	<div class="form-group">
 		<label for="details">Details</label>
 		<textarea name="details" placeholder="Package details"
-				  class="form-control">{{ request.form['content'] or package['content'] }}</textarea>
+				  class="form-control">{{ request.form['details'] or package['details'] }}</textarea>
 	</div>
+
+	<div class="form-group">
+		<label for="courier">Courier</label>
+		<select class="form-select" name="courier" aria-label="Select Courier">
+			{% for courier in couriers %}
+			<option value="{{ courier['courier_id'] }}">{{ courier['name'] }}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="status">Status</label>
+		<select class="form-select" name="status" aria-label="Select status">
+			<option value="accepted">Accepted</option>
+			<option value="transported">Transported</option>
+			<option value="delivered">Delivered</option>
+		</select>
+	</div>
+
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</div>

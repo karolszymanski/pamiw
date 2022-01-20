@@ -1,9 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
+
+def login_required(e):
+  return render_template('500.html'), 500
 
 def create_app():
 	app = Flask(__name__)
@@ -47,5 +50,7 @@ def create_app():
 
 	from .car import car as car_blueprint
 	app.register_blueprint(car_blueprint)
+
+	app.register_error_handler(500, login_required)
 
 	return app

@@ -13,22 +13,25 @@
 	{% block content %}
 		{% for package in packages %}
 		<div id="package-{{package['package_id']}}">
-			<div class="d-flex justify-content-between">
-				<div class="d-flex justify-content-between">
+			<div class="row justify-content-between">
+				<div class="d-flex col-xs-12 col-sm-4">
 					<i class="bi bi-box c-img-3"></i>
 					<div class="package-info-container">
 						<h4 id="package-title">{{ package['title'] }}</h4>
+						<p id="package-id">{{ package['status'] }}</p>
 						<p id="package-id">{{ package['package_id'] }}</p>
 					</div>
 				</div>
-				<div class="my-auto">
+				{% if current_user.is_authenticated %}
+				<div class="col-xs-12 col-sm-4 text-right">
 					<a href="{{ url_for('package.edit', id=package['id']) }}">
-						<button type="button" class="btn btn-warning">Edit</button>
+						<button type="button" class="btn btn-warning w-100 mw-2" >Edit</button>
 					</a>
 					<a href="{{ url_for('package.details', id=package['id']) }}">
-						<button type="button" class="btn btn-warning">Details</button>
+						<button type="button" class="btn btn-warning w-100 mw-2">Details</button>
 					</a>
 				</div>
+				{% endif %}
 			</div>
 			<hr>
 		</div>

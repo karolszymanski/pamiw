@@ -6,10 +6,11 @@
 			<h3 class="panel-title">{{ package['title'] }}</h3>
 		</div>
 		<div class="panel-body">
-			<p class="">{{ package['details'] }}</p>
-			<p class="">{{ package['status'] }}</p>
-			<p class="">{{ courier['name'] }}</p>
-			<p class="">{{ locker['name'] }}</p>
+			<p class="">Details: {{ package['details'] }}</p>
+			<p class="">Status: {{ package['status'] }}</p>
+			<p class="">Courier: {{ courier['name'] }}</p>
+			<p class="">Locker: {{ locker['name'] }}</p>
+			<p class="">Package_ID: {{ package['package_id'] }}</p>
 		</div>
 	</div>
 {% endblock %}

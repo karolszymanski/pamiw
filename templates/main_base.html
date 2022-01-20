@@ -8,17 +8,18 @@
 	<script src="../static/features/features.js"></script>
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body class="bg-light">
 	<nav class="navbar navbar-expand-md bg-dark bg-gradient">
-		<div class="d-flex justify-content-between w-100">
-			<ul class="navbar-nav">
-				{% if current_user.is_authenticated %}
+		<div class="w-100 row">
+			<ul class="navbar-nav col-sm-12 col-md-8">
 				<li class="nav-item">
 					<a class="nav-link" href="{{url_for('main.index')}}">HOME</a>
 				</li>
+				{% if current_user.is_authenticated %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{url_for('package.create')}}">New Package</a>
 				</li>
@@ -33,7 +34,7 @@
 				</li>
 				{% endif %}
 			</ul>
-			<ul class="navbar-nav">
+			<ul class="navbar-nav col-sm-12 col-md-4 justify-right">
 				{% if not current_user.is_authenticated %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
